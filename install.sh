@@ -7,8 +7,8 @@ if [[ $(uname -s) == 'Darwin' ]]; then
   echo alias fedscale=\'bash ${FEDSCALE_HOME}/fedscale.sh\' >> ~/.bash_profile
   
 else
-  echo export FEDSCALE_HOME=$(pwd) >> ~/.bashrc
-  echo alias fedscale=\'bash ${FEDSCALE_HOME}/fedscale.sh\' >> ~/.bashrc
+  echo export FEDSCALE_HOME=$(pwd) >> ~/.zshrc
+  echo alias fedscale=\'bash ${FEDSCALE_HOME}/fedscale.sh\' >> ~/.zshrc
 fi
 
 
@@ -48,7 +48,7 @@ if [[ $(uname -p) == 'arm' ]]; then
   
 else
   conda init bash
-  . ~/.bashrc
+  . ~/.zshrc
   conda env create -f environment.yml
   conda activate fedscale
 
@@ -56,13 +56,13 @@ fi
 
 
 
-if [ "$1" == "--cuda" ]; then
-  wget https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
-  sudo apt-get purge nvidia-* -y
-  sudo sh -c "echo 'blacklist nouveau\noptions nouveau modeset=0' > /etc/modprobe.d/blacklist-nouveau.conf"
-  sudo update-initramfs -u
-  sudo sh cuda_10.2.89_440.33.01_linux.run --override --driver --toolkit --samples --silent
-  export PATH=$PATH:/usr/local/cuda-10.2/
-  conda install cudatoolkit=10.2 -y
-fi
+# if [ "$1" == "--cuda" ]; then
+#   wget https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
+#   sudo apt-get purge nvidia-* -y
+#   sudo sh -c "echo 'blacklist nouveau\noptions nouveau modeset=0' > /etc/modprobe.d/blacklist-nouveau.conf"
+#   sudo update-initramfs -u
+#   sudo sh cuda_10.2.89_440.33.01_linux.run --override --driver --toolkit --samples --silent
+#   export PATH=$PATH:/usr/local/cuda-10.2/
+#   conda install cudatoolkit=10.2 -y
+# fi
 

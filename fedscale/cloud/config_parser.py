@@ -55,7 +55,8 @@ parser.add_argument('--blacklist_rounds', type=int, default=-1)
 parser.add_argument('--blacklist_max_len', type=float, default=0.3)
 parser.add_argument('--embedding_file', type=str,
                     default='glove.840B.300d.txt')
-parser.add_argument('--input_shape', type=int, nargs='+', default=[1, 3, 28, 28])
+parser.add_argument('--input_shape', type=int,
+                    nargs='+', default=[1, 3, 28, 28])
 parser.add_argument('--save_checkpoint', type=bool, default=False)
 
 
@@ -215,7 +216,9 @@ parser.add_argument('--noise-max', default=0.5,
 parser.add_argument('--no-bidirectional', dest='bidirectional', action='store_false', default=True,
                     help='Turn off bi-directional RNNs, introduces lookahead convolution')
 
-args, unknown = parser.parse_known_args()
+args = parser.parse_args(args=[])
+
+# args, unknown = parser.parse_known_args()
 args.use_cuda = eval(args.use_cuda)
 
 
