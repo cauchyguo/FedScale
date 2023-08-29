@@ -26,7 +26,7 @@ parser.add_argument('--executor_configs', type=str,
 parser.add_argument('--num_participants', type=int, default=4)
 parser.add_argument('--data_map_file', type=str, default=None)
 parser.add_argument('--use_cuda', type=str, default='True')
-parser.add_argument('--cuda_device', type=str, default=None)
+parser.add_argument('--cuda_device', type=str, default=4)
 parser.add_argument('--time_stamp', type=str, default='logs')
 parser.add_argument('--task', type=str, default='cv')
 parser.add_argument('--device_avail_file', type=str, default=None)
